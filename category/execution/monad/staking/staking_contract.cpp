@@ -1360,6 +1360,7 @@ Result<byte_string> StakingContract::precompile_compound(
     rewards_slot.clear();
 
     if (MONAD_UNLIKELY(rewards != 0)) {
+        emit_claim_rewards_event(val_id, msg_sender, rewards);
         BOOST_OUTCOME_TRY(delegate(val_id, rewards, msg_sender));
     }
 
